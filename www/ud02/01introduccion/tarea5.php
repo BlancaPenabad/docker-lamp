@@ -29,7 +29,10 @@ $multiply = $x * $y ;
 echo "Multiplicación: ",$multiply,"</br>";
 
 $division = $x / $y ;
-echo "División: ",$division,"</br>"," ","</br>";
+echo "División: ",$division,"</br>";
+
+$modulo = $x % $y ;
+echo "Módulo: ",$modulo,"</br>"," ","</br>";
 
 /*3. (Optativo) Escribe un programa que imprima por pantalla los cuadrados de los 
 30 primeros números naturales.*/ 
