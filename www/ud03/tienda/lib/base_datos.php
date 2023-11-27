@@ -25,7 +25,7 @@ function del_connection(){
 }
 
 
-
+//Función para crear la base de datos 'tienda'
 function crear_bd_tienda(){
     global $connection;
     $sql = "CREATE DATABASE IF NOT EXISTS tienda";
@@ -46,7 +46,7 @@ function seleccionar_bd_tienda(){
     }
 }
 
-
+//Función para crear la tabla 'usuarios'
 function crear_tabla_usuarios(){
     global $connection;
     $sql = "CREATE TABLE IF NOT EXISTS usuarios (
@@ -63,6 +63,24 @@ function crear_tabla_usuarios(){
     }
 }
 
+
+//Función para dar de alta un usuario
+function crearUsuario($nombre, $apellidos, $edad, $provincia){
+    global $connection;
+
+    $stmt = $connection->prepare("INSERT INTO usuarios (nombre, apellidos, edad, provincia) VALUES (?,?,?,?)");
+    if(!$stmt){
+        die("</br>Error al crear el nuevo usuario. ".$connection->error);
+
+    }
+    $stmt->bind_param("ssis", $nombre, $apellidos, $edad, $provincia);
+    $stmt->execute();
+
+    return "<p>El nuevo usuario ha sido dado de alta.</p>";
+    $stmt.close();
+}
+
+//Función que muestra los usuarios en una tabla con opciones de edición y eliminación
 function listarUsuarios(){
     global $connection;
     $sql = "SELECT * FROM usuarios";
@@ -85,6 +103,7 @@ function listarUsuarios(){
     }
 }
 
+//Función que elimina un usuario segun su id
 function eliminarUsuario($idUsuario){
     global $connection;
 
