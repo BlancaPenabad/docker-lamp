@@ -15,15 +15,21 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
     <p>Lista de usuarios con enlaces para borrar y editar</p>
-    <?php
-        //Obter conexión
-        //Seleccionar bd
-        //Consulta obtención dos usuario (array)
-        //Crear lista de usuarios
-        //  - cada usuario mostra dous enlaces (editar e borrar)
-        //  - editar.php?id=4
-        //  - borrar.php?id=7
-    ?>
+    <table>
+        <tr>
+            <td><b>id</b></td>
+            <td><b>Nombre</b></td>
+            <td><b>Apellidos</b></td>
+            <td><b>Edad</b></td>
+            <td><b>Provincia</b></td>
+        </tr>
+        <?php require_once 'lib/base_datos.php';
+            get_connection();
+            seleccionar_bd_tienda();
+            echo listarUsuarios();
+            del_connection();
+        ?>
+    </table>
     <footer>
         <p>
             <a href='index.php'>Página de inicio</a>
