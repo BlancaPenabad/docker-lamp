@@ -85,3 +85,18 @@ function listarUsuarios(){
     }
 }
 
+function eliminarUsuario($idUsuario){
+    global $connection;
+
+    $stmt = $connection->prepare("DELETE FROM usuarios WHERE id=?");
+    $stmt->bind_param("i", $idUsuario);
+
+    if ($stmt->execute()){
+        return "<p>Usuario con id=".$id." eliminado.</p>";
+
+    }else{
+        return "</br>¡ERROR! No se ha podido eliminar al usuario. Error: ".$connection->error;
+    }
+    $stmt.close();
+}
+
