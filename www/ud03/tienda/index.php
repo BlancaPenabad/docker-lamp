@@ -14,6 +14,7 @@
         include("lib/base_datos.php");
         get_connection();
         crear_bd_tienda();
+        seleccionar_bd_tienda();
         crear_tabla_usuarios();
 
     ?>

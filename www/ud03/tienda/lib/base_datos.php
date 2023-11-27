@@ -37,7 +37,7 @@ function crear_bd_tienda(){
 }
 
 
-function seleccionr_bd_tienda(){
+function seleccionar_bd_tienda(){
     global $connection;
     if($connection->select_db('tienda')){
         echo "</br> Se ha seleccionado la base de datos 'tienda'.";
