@@ -1,3 +1,49 @@
+<?php
+include("lib/base_datos.php");
+include("lib/utilidades.php");
+get_connection();
+crear_bd_tienda();
+seleccionar_bd_tienda();
+crear_tabla_usuarios();
+
+$nombre = $apellidos = $edad = $provincia = $resultado = "";
+$nombreErr = $apellidosErr = $edadErr = "";
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $nombre = $_POST["nombre"];
+    $apellidos = $_POST["apellidos"];
+    $edad = $_POST["edad"];
+    $provincia = $_POST["provincia"];
+}
+
+
+//Validaciones:
+
+if(!registroObligatorio($nombre) || !longitudNombre($nombre) || !validarString($nombre)){
+    $nombreErr = "En nombre introducido no es válido";
+}
+
+if(!registroObligatorio($apellidos) || !longitudApellido($apellidos) || !validarString($apellidos)){
+    $nombreErr = "Los apellidos introducidos no son válidos";
+}
+
+
+if(!registroObligatorio($edad) || !validarEdad($edad) || !validarDigito($edad)){
+    $edadErr = "Edad no válida.";
+}
+
+if(empty($nombreErr) && empty($apellidosErr) && empty($edadErr)){
+    $resultado = crearUsuario($nombre, $apellidos, $edad, $provincia);
+}
+
+?>
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -25,11 +71,17 @@
     <!-- o "action" chama a dar_de_alta.php de xeito reflexivo-->
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
-    Nombre: <input type="text" name "nombre"> </br>
-    Apellidos: <input type="text" name "apellidos"> </br>
-    Edad: <input type="number" name "edad"> </br>
+    Nombre: <input type="text" id="nombre" name ="nombre"> </br>
+    <span class="error"><?php echo $nombreErr; ?></span>
+
+    Apellidos: <input type="text" id="apellidos" name ="apellidos"> </br>
+    <span class="error"><?php echo $apellidosErr; ?></span>
+
+    Edad: <input type="number" id="edad" name = "edad"> </br>
+    <span class="error"><?php echo $edadErr; ?></span>
+
     Provincia: </br>
-    <select name="provincias">
+    <select name="provincia" id="provincia">
         <option value="ACoruna">A Coruña</option>
         <option value="Lugo">Lugo</option>
         <option value="Ourense">Ourense</option>
@@ -38,7 +90,13 @@
         <input type="submit" name="submit" value="Registrar">
     
     </form>
-
+    <div class="resultado">
+        <?php 
+        if($resultado){
+            echo $resultado;
+        }
+        ?>
+    </div>
     <footer>
         <p>
             <a href='index.php'>Página de inicio</a>

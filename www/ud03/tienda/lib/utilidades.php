@@ -23,7 +23,7 @@ function longitudApellido($apellidos){
 
 //Función que verifica si un campo es un string
 function validarString($reg){
-    return preg_match('/^[A-Za-zÁÉÍÓÚáéíóúÜüÑñ]+$/', $campo);
+    return preg_match('/^[A-Za-zÁÉÍÓÚáéíóúÜüÑñ]+$/', $reg);
 }
 
 
