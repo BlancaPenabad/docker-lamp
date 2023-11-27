@@ -119,3 +119,18 @@ function eliminarUsuario($idUsuario){
     $stmt.close();
 }
 
+//Función que modifica un usuario
+function modificaUsuario($id, $nombre, $apellidos, $edad, $provincia){
+    global $connection;
+
+    $stmt = $connection->prepare("UPDATE usuarios SET nombre=?, apellidos=?, edad=?, provincia=? WHERE id=?");
+    $stmt->bind_param("ssisi", $nombre, $apellidos, $edad, $provincia, $id);
+
+    if($stmt->execure()){
+        return "<p>El usuario ha sido modificado correctamente.</p>";
+    }else{
+        return "</br>¡ERROR! No se ha podido modificar el usuario. Error nº ".$connection->error;
+
+    }
+    $stmt->close();
+}
