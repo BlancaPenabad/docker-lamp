@@ -12,9 +12,9 @@
 <body>
     <?php
         include("lib/base_datos.php");
-        $conexion = get_conexion();
-        crear_bd_tienda($conexion);
-        crear_tabla_usuario($conexion);
+        $conexion = get_connection();
+        crear_bd_tienda($connection);
+        crear_tabla_usuario($connection);
 
     ?>
     <h1>Tienda IES San Clemente</h1>
