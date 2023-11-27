@@ -23,7 +23,22 @@
 
     <p>Formulario de alta</p>
     <!-- o "action" chama a dar_de_alta.php de xeito reflexivo-->
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+
+    Nombre: <input type="text" name "nombre"> </br>
+    Apellidos: <input type="text" name "apellidos"> </br>
+    Edad: <input type="number" name "edad"> </br>
+    Provincia: </br>
+    <select name="provincias">
+        <option value="ACoruna">A Coruña</option>
+        <option value="Lugo">Lugo</option>
+        <option value="Ourense">Ourense</option>
+        <option value="Pontevedra">Pontevedra</option>
+        </select></br>
+        <input type="submit" name="submit" value="Registrar">
     
+    </form>
+
     <footer>
         <p>
             <a href='index.php'>Página de inicio</a>
@@ -32,3 +47,4 @@
 </body>
 
 </html>
+<?php del_connection(); ?>
