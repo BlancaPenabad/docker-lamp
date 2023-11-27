@@ -63,3 +63,25 @@ function crear_tabla_usuarios(){
     }
 }
 
+function listarUsuarios(){
+    global $connection;
+    $sql = "SELECT * FROM usuarios";
+
+    $resultado = $connection->query($sql);
+
+    if ($resultado-> num_rows > 0) {
+        while($row = $resultado->fetch_assoc()){
+            echo"< tr >";
+            echo "<td>".$row["id"]."</td>";
+            echo "<td>".$row["nombre"]."</td>";
+            echo "<td>".$row["apellido"]."</td>";
+            echo "<td>".$row["provincia"]."</td>";
+            echo "<td> <a class='btn btn-primary' href=editar.php?id=".$row['id']."Editar</a> </td>";
+            echo "<td> <a class='btn btn-primary' href=borrar.php?id=".$row['id']."Eliminar</a> </td>";
+            echo " </tr> ";
+        }
+    }else{
+        echo "No hay resultados";
+    }
+}
+

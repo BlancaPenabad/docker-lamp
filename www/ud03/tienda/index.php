@@ -34,3 +34,4 @@
 </body>
 
 </html>
+<?php del_connection();?>
