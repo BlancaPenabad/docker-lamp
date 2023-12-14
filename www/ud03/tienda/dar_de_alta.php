@@ -22,10 +22,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 if(!registroObligatorio($nombre) || !longitudNombre($nombre) || !validarString($nombre)){
     $nombreErr = "En nombre introducido no es válido";
+    
 }
 
 if(!registroObligatorio($apellidos) || !longitudApellido($apellidos) || !validarString($apellidos)){
-    $nombreErr = "Los apellidos introducidos no son válidos";
+    $apellidosErr = "Los apellidos introducidos no son válidos";
+
 }
 
 
@@ -36,6 +38,8 @@ if(!registroObligatorio($edad) || !validarEdad($edad) || !validarDigito($edad)){
 if(empty($nombreErr) && empty($apellidosErr) && empty($edadErr)){
     $resultado = crearUsuario($nombre, $apellidos, $edad, $provincia);
 }
+
+
 
 ?>
 
