@@ -26,6 +26,8 @@
         <?php require_once 'lib/base_datos.php';
             get_connection();
             seleccionar_bd_tienda();
+
+            //Función listar
             echo listarUsuarios();
             del_connection();
         ?>
