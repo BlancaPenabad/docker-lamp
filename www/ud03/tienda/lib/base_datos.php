@@ -12,7 +12,7 @@ function get_connection(){
     if($connection->connect_error){
         die("</br>Fallo en la conexión: ".$connection->connect_error." con número ".$error);
     }
-    echo "</br>Conexión correcta.";
+    //echo "</br>Conexión correcta.";
     
 }
 
@@ -30,7 +30,7 @@ function crear_bd_tienda(){
     global $connection;
     $sql = "CREATE DATABASE IF NOT EXISTS tienda";
     if($connection->query($sql)){
-        echo "</br>La base de datos 'tienda' ha sido creada.";
+        //echo "</br>La base de datos 'tienda' ha sido creada.";
     }else{
         echo "</br>¡ERROR! La base de datos no ha podido crearse: ".$connection->error;
     }
@@ -40,7 +40,7 @@ function crear_bd_tienda(){
 function seleccionar_bd_tienda(){
     global $connection;
     if($connection->select_db('tienda')){
-        echo "</br> Se ha seleccionado la base de datos 'tienda'.";
+        //echo "</br> Se ha seleccionado la base de datos 'tienda'.";
     }else{
         echo "</br>Error al seleccionar la base de datos: ".$connection->error;
     }
@@ -57,7 +57,7 @@ function crear_tabla_usuarios(){
         provincia VARCHAR(50) NOT NULL)";
 
     if($connection->query($sql)){
-        echo "</br>La tabla 'usuarios' ha sido creada.";
+        //echo "</br>La tabla 'usuarios' ha sido creada.";
     }else{
         echo "</br>¡ERROR! La tabla 'usuarios' no ha podido crearse: ".$connection->error;
     }
