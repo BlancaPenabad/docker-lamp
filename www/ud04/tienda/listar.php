@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -11,22 +10,28 @@
 </head>
 
 <body>
-    <?php
-        include("lib/base_datos.php");
-        get_connection();
-        crear_bd_tienda();
-        seleccionar_bd_tienda();
-        crear_tabla_usuarios();
-
-    ?>
-    <h1>Tienda IES San Clemente</h1>
+    <h1>Lista de usuarios</h1>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
-    <p>
-        <a class="btn btn-primary" href="dar_de_alta.php" role="button"> Alta usuarios</a>
-        <a class="btn btn-primary" href="listar.php" role="button"> Listar usuarios</a>
-    </p>
+    <p>Lista de usuarios con enlaces para borrar y editar</p>
+    <table>
+        <tr>
+            <td><b>id</b></td>
+            <td><b>Nombre</b></td>
+            <td><b>Apellidos</b></td>
+            <td><b>Edad</b></td>
+            <td><b>Provincia</b></td>
+        </tr>
+        <?php require_once 'lib/base_datos.php';
+            get_connection();
+            seleccionar_bd_tienda();
+
+            //Función listar
+            echo listarUsuarios();
+            del_connection();
+        ?>
+    </table>
     <footer>
         <p>
             <a href='index.php'>Página de inicio</a>
@@ -35,4 +40,3 @@
 </body>
 
 </html>
-<?php del_connection();?>
