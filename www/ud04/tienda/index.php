@@ -1,12 +1,17 @@
 <?php
+//EJERCICIO 1:
+
 session_start();
-if(!isset($_SESSION['contador'])){
-    $_SESSION['contador'] = 0;
+
+if(!isset($_COOKIE['contador'])){  ////Primero nos cercioriamos de que no existe la cookie "contador".  
+    setcookie('contador', 1, time()+86400*30); //De no existir, la creamos y la inicializamos a 1. 
+    echo "¡Bienvenid@ por primera vez a nuestra tienda!"; //Mostramos un mensaje de bienvenida por ser la 1ª vez.
 }else{
-    $_SESSION['contador']++;
+    setcookie('contador', $_COOKIE['contador']+1, time()+86400*30); //Si la cookie existe, incrementamos su valor en 1 y actualizamos.
+    echo "Contador visitas: ".$_COOKIE['contador']; //Mostramos un mensaje con el nº de visitas almacenado en la cookie.
 }
 
-echo "Contador visitas: ".$_SESSION['contador'];
+
 ?>
 
 <!doctype html>
