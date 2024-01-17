@@ -4,7 +4,7 @@
 session_start();
 
 if(!isset($_COOKIE['contador'])){  ////Primero nos cercioriamos de que no existe la cookie "contador".  
-    setcookie('contador', 1, time()+86400*30); //De no existir, la creamos y la inicializamos a 1. 
+    setcookie('contador', 1, time()+86400); //De no existir, la creamos y la inicializamos a 1. De duración le doy 1 día. 
     echo "¡Bienvenid@ por primera vez a nuestra tienda!"; //Mostramos un mensaje de bienvenida por ser la 1ª vez.
 }else{
     setcookie('contador', $_COOKIE['contador']+1, time()+86400*30); //Si la cookie existe, incrementamos su valor en 1 y actualizamos.

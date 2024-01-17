@@ -7,9 +7,25 @@ include('lib/utilidades.php');
 
 $mensaje = '';
 
-$idiomaSeleccionado = $_POST["idioma"];
+$cookie_name ="idiomas";
 
-$mensaje = mensajeIdioma($idiomaSeleccionado);
+if(!isset($_POST["idioma"])){
+    echo " ";
+}else{
+    $idiomaSeleccionado = $_POST["idioma"];
+
+    setcookie($cookie_name, $idiomaSeleccionado, time() + (86400 * 30));
+
+    if(!isset($_COOKIE[$cookie_name])){
+        echo " ";
+    }else{
+        $mensaje = mensajeIdioma($idiomaSeleccionado);
+    }
+}
+
+//$mensaje = mensajeIdioma($idiomaSeleccionado);
+
+
 
 
 ?>
