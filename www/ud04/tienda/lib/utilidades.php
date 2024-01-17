@@ -39,4 +39,36 @@ function validarEdad($edad){
     return $edad>=0 && $edad<=100;
 }
 
+
+
+//Función que define el mensaje de bienvenida en el idioma seleccionado
+function mensajeIdioma($idioma){
+
+    $mensaje = '';
+    if($idioma){
+        switch ($idioma){
+        case 'ES':
+            $mensaje = "¡Bienvenido a mi página!";
+            break;
+        case 'GAL':
+            $mensaje = "Benvido á miña páxina!";
+            break;
+        case 'ENG':
+            $mensaje = "Welcome to my page!";
+            break;    
+        case 'FR':
+            $mensaje = "Bienvenue sur ma page!";
+            break;
+        case 'RUS':
+            $mensaje = "Добро пожаловать на мою страницу!";
+            break;
+        default:
+            $mensaje = "";
+            break;   
+
+    }
+ }
+    return $mensaje;
+}
+
 ?>

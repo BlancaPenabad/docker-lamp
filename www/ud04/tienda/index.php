@@ -41,8 +41,13 @@ if(!isset($_COOKIE['contador'])){  ////Primero nos cercioriamos de que no existe
     <p>
         <a class="btn btn-primary" href="dar_de_alta.php" role="button"> Alta usuarios</a>
         <a class="btn btn-primary" href="listar.php" role="button"> Listar usuarios</a>
+        
     </p>
+    
     <footer>
+    <p>
+            <a href="idiomas.php" role="button"> Idioma</a>
+        </p>
         <p>
             <a href='index.php'>Página de inicio</a>
         </p>
