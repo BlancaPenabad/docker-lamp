@@ -135,3 +135,21 @@ function modificaUsuario($id, $nombre, $apellidos, $edad, $provincia){
     }
     $stmt->close();
 }
+
+//Función para crear la tabla 'productos'
+function crear_tabla_productos(){
+    global $connection;
+    $sql = "CREATE TABLE IF NOT EXISTS productos (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nombre VARCHAR(50),
+        descripcion VARCHAR(100) ,
+        precio FLOAT,
+        unidades FLOAT
+        foto BLOB)";
+
+    if($connection->query($sql)){
+        //echo "</br>La tabla 'productos' ha sido creada.";
+    }else{
+        echo "</br>¡ERROR! La tabla 'productos' no ha podido crearse: ".$connection->error;
+    }
+}
