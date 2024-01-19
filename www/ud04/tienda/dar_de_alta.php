@@ -2,9 +2,7 @@
 include("lib/base_datos.php");
 include("lib/utilidades.php");
 get_connection();
-crear_bd_tienda();
 seleccionar_bd_tienda();
-crear_tabla_usuarios();
 
 $nombre = $apellidos = $edad = $provincia = $resultado = "";
 $nombreErr = $apellidosErr = $edadErr = "";

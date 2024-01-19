@@ -32,9 +32,11 @@ if(!isset($_COOKIE['contador'])){  ////Primero nos cercioriamos de que no existe
         crear_bd_tienda();
         seleccionar_bd_tienda();
         crear_tabla_usuarios();
+        crear_tabla_productos();
+
 
     ?>
-    <h1>Tienda IES San Clemente</h1>
+    <h1>Panadería San Clemente</h1>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>

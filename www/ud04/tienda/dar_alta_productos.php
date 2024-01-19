@@ -2,6 +2,12 @@
 <?php 
 
 require "lib/funciones.php";
+require "lib/utilidades.php";
+require "lib/base_datos.php";
+get_connection();
+seleccionar_bd_tienda();
+
+
 
     $target_dir = "uploads/"; //carpeta donde guardaré el archivo.
     $target_file = $target_dir.basename($_FILES["fichero"]["name"]); //Ruta del archivo.
@@ -13,28 +19,39 @@ require "lib/funciones.php";
             echo "Todos los campos del formulario son obligatorios.";
         }else{
             
-            echo "Todo super OK.";
-        }
-    }
+            $nombre = test_input($_POST["nombre"]);
+            $descripcion = test_input($_POST["descripcion"]);
+            $precio = test_input($_POST["precio"]);
+            $unidades = test_input($_POST["unidades"]);
+            $foto = $_FILES["fichero"];
+ 
 
+            if(!file_exists($target_file)){
 
-    if(!file_exists($target_file)){
-
-        if(compruebaTamanho($tamanhoFichero)){
-
-            if(compruebaExtension($extensionFichero)){
-                echo "Todo OK.";
+                if(compruebaTamanho($tamanhoFichero)){
+        
+                    if(compruebaExtension($extensionFichero)){
+                        altaProductos($nombre,$descripcion, $precio, $unidades, $foto);
+                        echo "Todo OK.";
+                    }else{
+                        echo "Extensión no válida.";
+                    }
+        
+                }else{
+                    echo "El fichero es demasiado grande.";
+                }
+        
             }else{
-                echo "Extensión no válida.";
+                echo "El fichero ya existe.";
             }
-
-        }else{
-            echo "El fichero es demasiado grande.";
         }
-
-    }else{
-        echo "El fichero ya existe.";
     }
+
+
+   
+
+
+    del_connection();
 ?>
 
 

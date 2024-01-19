@@ -144,12 +144,31 @@ function crear_tabla_productos(){
         nombre VARCHAR(50),
         descripcion VARCHAR(100) ,
         precio FLOAT,
-        unidades FLOAT
-        foto BLOB)";
+        unidades FLOAT,
+        foto BLOB NOT NULL)";
 
     if($connection->query($sql)){
         //echo "</br>La tabla 'productos' ha sido creada.";
     }else{
-        echo "</br>¡ERROR! La tabla 'productos' no ha podido crearse: ".$connection->error;
+        //echo "</br>¡ERROR! La tabla 'productos' no ha podido crearse: ".$connection->error;
     }
+}
+
+//Función para dar de alta nuevos productos.
+function altaProductos($nombre, $descripcion, $precio, $unidades, $imagen){
+
+    global $connection;
+
+    $stmt = $connection->prepare("INSERT INTO productos (nombre, descripcion, precio, unidades, foto) VALUES (?,?,?,?, ?)");
+    if(!$stmt){
+        die("</br>Error al crear el nuevo producto. ".$connection->error);
+
+    }
+    $stmt->bind_param("ssdib", $nombre, $descripcion, $precio, $unidades, $imagen);
+    $stmt->execute();
+    
+    echo "El nuevo producto ha sido dado de alta correctamente.";
+    return "<p>El nuevo producto ha sido dado de alta.</p>";
+    $stmt.close();
+
 }

@@ -1,4 +1,14 @@
 <?php
+
+
+function test_input($datos)
+{
+    $datos = trim($datos);
+    $datos = stripslashes($datos);
+    $datos = htmlspecialchars($datos);
+    return $datos;
+}
+
 //Todos los métodos que validan en formulario:
 
 //Función que verifica los registros requeridos:
