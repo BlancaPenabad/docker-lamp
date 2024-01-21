@@ -1,4 +1,3 @@
-
 <?php 
 
 require "lib/funciones.php";
@@ -10,12 +9,12 @@ seleccionar_bd_tienda();
 
 
     $target_dir = "uploads/"; //carpeta donde guardaré el archivo.
-    $target_file = $target_dir.basename($_FILES["fichero"]["name"]); //Ruta del archivo.
+    $target_file = $target_dir.basename($_FILES["imagenes"]["name"]); //Ruta del archivo.
     $extensionFichero = pathinfo($target_file, PATHINFO_EXTENSION); //Extensión del archivo
-    $tamanhoFichero = $_FILES["fichero"]["size"];
+    $tamanhoFichero = $_FILES["imagenes"]["size"];
 
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])){
-        if( empty($_POST["nombre"]) || empty($_POST["descripcion"]) || empty($_POST["precio"]) || empty($_POST["unidades"]) || empty($_FILES["fichero"]["name"]) ){
+        if( empty($_POST["nombre"]) || empty($_POST["descripcion"]) || empty($_POST["precio"]) || empty($_POST["unidades"]) || empty($_FILES["imagenes"]["name"][0]) ){
             echo "Todos los campos del formulario son obligatorios.";
         }else{
             
@@ -23,7 +22,13 @@ seleccionar_bd_tienda();
             $descripcion = test_input($_POST["descripcion"]);
             $precio = test_input($_POST["precio"]);
             $unidades = test_input($_POST["unidades"]);
-            $foto = $_FILES["fichero"];
+            $fotos = $_FILES["imagenes"];
+
+            //Recorremos el array de imágenes para validarlas:
+
+            foreach ($fotos['name'] as $key => $nombreFoto){
+
+            }
  
 
             if(!file_exists($target_file)){
@@ -76,7 +81,8 @@ seleccionar_bd_tienda();
     Descripción: </br><textarea id="descripcion" name ="descripcion" rows="5" cols="50"> </textarea> </br>
     Precio: <input type="number" id="precio" name = "precio" step="0.01"> </br>
     Unidades: <input type="number" id="unidades" name ="unidades"> </br>
-    Imagen: <input type="file" name="fichero" id="fichero"></br>
+    Imágenes: <input type="file" name="imagenes[]" id="imagenes" multiple required></br>
+
     <input type="submit" name="submit" value="Registrar">
 
     
