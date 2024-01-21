@@ -1,4 +1,3 @@
-
 <?php 
 
 require "lib/funciones.php";
@@ -30,12 +29,32 @@ seleccionar_bd_tienda();
 
                 if(compruebaTamanho($tamanhoFichero)){
         
-                    if(compruebaExtension($extensionFichero)){
+                    if($extensionFichero = 'txt'){
+                        $target_dir = 'uploads/';
+                        $target_file = $target_dir.basename($_FILES["fichero"]["name"]);
                         move_uploaded_file($_FILES["fichero"]["tmp_name"], $target_file);
                         altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
-                        echo "Todo OK.";
+                        echo "Archivo de texto dado de alta.";
+
+                    }else if ($extensionFichero = 'pdf') {
+                        $target_dir = 'uploads/pdf/';
+                        $target_file = $target_dir.basename($_FILES["fichero"]["name"]);
+                        move_uploaded_file($_FILES["fichero"]["tmp_name"], $target_file);
+                        altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
+                        echo "PDF dado de alta.";
+
+                    }else if($extensionFichero = 'jpg' || $extensionFichero = 'jpeg' || $extensionFichero = 'png') {
+                        $target_dir = 'uploads/imagen/';
+                        $target_file = $target_dir.basename($_FILES["fichero"]["name"]);
+                        move_uploaded_file($_FILES["fichero"]["tmp_name"], $target_file);
+                        altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
+                        echo "Imagen dada de alta.";
+
                     }else{
-                        echo "Extensión no válida.";
+                        $target_dir = 'uploads/otros/';
+                        $target_file = $target_dir.basename($_FILES["fichero"]["name"]);
+                        move_uploaded_file($_FILES["fichero"]["tmp_name"], $target_file);
+                        altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
                     }
         
                 }else{
