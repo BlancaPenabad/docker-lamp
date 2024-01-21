@@ -31,7 +31,7 @@ seleccionar_bd_tienda();
                 if(compruebaTamanho($tamanhoFichero)){
         
                     if(compruebaExtension($extensionFichero)){
-                        altaProductos($nombre,$descripcion, $precio, $unidades, $foto);
+                        altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
                         echo "Todo OK.";
                     }else{
                         echo "Extensión no válida.";

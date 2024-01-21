@@ -51,9 +51,7 @@ if(!isset($_COOKIE['contador'])){  ////Primero nos cercioriamos de que no existe
     <p>
             <a href="idiomas.php" role="button"> Idioma</a>
         </p>
-        <p>
-            <a href='index.php'>Página de inicio</a>
-        </p>
+       
     </footer>
 </body>
 

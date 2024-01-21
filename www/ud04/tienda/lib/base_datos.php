@@ -172,3 +172,23 @@ function altaProductos($nombre, $descripcion, $precio, $unidades, $imagen){
     $stmt.close();
 
 }
+
+function altaProductosII($nombre, $descripcion, $precio, $unidades, $imagen){
+
+    global $connection;
+
+    $stmt = $connection->prepare("INSERT INTO productos (nombre, descripcion, precio, unidades, foto) VALUES (?,?,?,?, ?)");
+    if(!$stmt){
+        die("</br>Error al crear el nuevo producto. ".$connection->error);
+
+    }
+    $stmt->bind_param("ssdib", $nombre, $descripcion, $precio, $unidades, $imagen);
+    //$stmt->send_long_data(4, $imagen);
+    $stmt->execute();
+    
+    echo "El nuevo producto ha sido dado de alta correctamente.";
+    return "<p>El nuevo producto ha sido dado de alta.</p>";
+    $stmt.close();
+
+}
+

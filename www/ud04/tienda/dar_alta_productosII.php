@@ -9,9 +9,9 @@ seleccionar_bd_tienda();
 
 
     $target_dir = "uploads/"; //carpeta donde guardaré el archivo.
-    $target_file = $target_dir.basename($_FILES["imagenes"]["name"]); //Ruta del archivo.
-    $extensionFichero = pathinfo($target_file, PATHINFO_EXTENSION); //Extensión del archivo
-    $tamanhoFichero = $_FILES["imagenes"]["size"];
+    //$target_file = $target_dir.basename($_FILES["imagenes"]["name"]); //Ruta del archivo.
+    //$extensionFichero = pathinfo($target_file, PATHINFO_EXTENSION); //Extensión del archivo
+    //$tamanhoFichero = $_FILES["imagenes"]["size"];
 
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])){
         if( empty($_POST["nombre"]) || empty($_POST["descripcion"]) || empty($_POST["precio"]) || empty($_POST["unidades"]) || empty($_FILES["imagenes"]["name"][0]) ){
@@ -24,31 +24,36 @@ seleccionar_bd_tienda();
             $unidades = test_input($_POST["unidades"]);
             $fotos = $_FILES["imagenes"];
 
+
             //Recorremos el array de imágenes para validarlas:
 
-            foreach ($fotos['name'] as $key => $nombreFoto){
 
+            for($i = 0; $i < count($fotos); $i++){
+                $target_file = $target_dir.basename($_FILES["imagenes"]["name"][$i]); //Ruta del archivo.
+                $extensionFichero = pathinfo($target_file, PATHINFO_EXTENSION); //Extensión del archivo
+
+                if(!file_exists($target_file)){
+                    if(compruebaExtension($extensionFichero)){
+                        $tamanhoFichero = $_FILES["imagenes"]["size"][$i];
+                        if(compruebaTamanho($tamanhoFichero)){
+                            
+                        }else{
+                            $mensajeError = "El fichero es demasiado grande.";
+                        }
+    
+                    }else{
+                        $mensajeError = "Extensión no válida.";
+                    } 
+                }
+                
+            
             }
  
 
-            if(!file_exists($target_file)){
-
-                if(compruebaTamanho($tamanhoFichero)){
-        
-                    if(compruebaExtension($extensionFichero)){
-                        altaProductos($nombre,$descripcion, $precio, $unidades, $foto);
-                        echo "Todo OK.";
-                    }else{
-                        echo "Extensión no válida.";
-                    }
-        
-                }else{
-                    echo "El fichero es demasiado grande.";
-                }
-        
-            }else{
-                echo "El fichero ya existe.";
+            if(empty($mensajeError)){
+                altaProductosII($nombre, $descripcion, $precio, $unidades, $target_file);
             }
+          
         }
     }
 
