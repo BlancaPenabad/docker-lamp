@@ -8,7 +8,7 @@ seleccionar_bd_tienda();
 
 
 
-    $target_dir = "uploads/"; //carpeta donde guardaré el archivo.
+    $target_dir = "./uploads/"; //carpeta donde guardaré el archivo.
     $target_file = $target_dir.basename($_FILES["fichero"]["name"]); //Ruta del archivo.
     $extensionFichero = pathinfo($target_file, PATHINFO_EXTENSION); //Extensión del archivo
     $tamanhoFichero = $_FILES["fichero"]["size"];
@@ -29,32 +29,32 @@ seleccionar_bd_tienda();
 
                 if(compruebaTamanho($tamanhoFichero)){
         
-                    if($extensionFichero = 'txt'){
-                        $target_dir = 'uploads/';
+                    if($extensionFichero == 'txt'){
+                        $target_dir = './uploads/texto/';
                         $target_file = $target_dir.basename($_FILES["fichero"]["name"]);
                         move_uploaded_file($_FILES["fichero"]["tmp_name"], $target_file);
-                        altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
+                        //altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
                         echo "Archivo de texto dado de alta.";
 
-                    }else if ($extensionFichero = 'pdf') {
-                        $target_dir = 'uploads/pdf/';
+                    }else if ($extensionFichero == 'pdf') {
+                        $target_dir = './uploads/pdf/';
                         $target_file = $target_dir.basename($_FILES["fichero"]["name"]);
                         move_uploaded_file($_FILES["fichero"]["tmp_name"], $target_file);
-                        altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
+                        //altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
                         echo "PDF dado de alta.";
 
-                    }else if($extensionFichero = 'jpg' || $extensionFichero = 'jpeg' || $extensionFichero = 'png') {
-                        $target_dir = 'uploads/imagen/';
+                    }else if($extensionFichero == 'jpg' || $extensionFichero = 'jpeg' || $extensionFichero = 'png') {
+                        $target_dir = './uploads/imagen/';
                         $target_file = $target_dir.basename($_FILES["fichero"]["name"]);
                         move_uploaded_file($_FILES["fichero"]["tmp_name"], $target_file);
-                        altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
+                       //altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
                         echo "Imagen dada de alta.";
 
                     }else{
-                        $target_dir = 'uploads/otros/';
+                        $target_dir = './uploads/otros/';
                         $target_file = $target_dir.basename($_FILES["fichero"]["name"]);
                         move_uploaded_file($_FILES["fichero"]["tmp_name"], $target_file);
-                        altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
+                        //altaProductos($nombre,$descripcion, $precio, $unidades, $target_file);
                     }
         
                 }else{

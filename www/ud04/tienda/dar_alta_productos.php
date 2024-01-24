@@ -9,7 +9,7 @@ seleccionar_bd_tienda();
 
 
 
-    $target_dir = "uploads/"; //carpeta donde guardaré el archivo.
+    $target_dir = "./uploads/"; //carpeta donde guardaré el archivo.
     $target_file = $target_dir.basename($_FILES["fichero"]["name"]); //Ruta del archivo.
     $extensionFichero = pathinfo($target_file, PATHINFO_EXTENSION); //Extensión del archivo
     $tamanhoFichero = $_FILES["fichero"]["size"];
