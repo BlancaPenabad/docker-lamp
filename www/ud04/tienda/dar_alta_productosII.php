@@ -7,6 +7,7 @@ get_connection();
 seleccionar_bd_tienda();
 
 
+//PARA DAR DE ALTA VARIAS IMÁGENES TENEMOS QUE CREAR UNA TABLA "IMÁGNES" CON LAS COLUMNAS "ID" Y "FOTO"
 
     $target_dir = "uploads/"; //carpeta donde guardaré el archivo.
     //$target_file = $target_dir.basename($_FILES["imagenes"]["name"]); //Ruta del archivo.
