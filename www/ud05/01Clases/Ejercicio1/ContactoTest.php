@@ -1,5 +1,5 @@
 <?php
-include("contacto.php");
+include("Contacto.php");
 
 $C1 = new Contacto("Blanca", "Penabad Villar","555555555");
 $C2 = new Contacto("Fátima", "Sánchez Blanco", "666666666");
