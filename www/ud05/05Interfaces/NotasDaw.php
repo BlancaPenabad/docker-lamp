@@ -29,6 +29,7 @@ class NotasDaw extends Notas implements CalculosCentroEstudios{
     }
     return $numSuspensos;
 }
+//CALCULO LA NOTA MEDIA Y LA DEVUELVO REDONDEADA A 1 DECIMAL
     public function notaMedia(){
 
         $suma = 0;
@@ -36,8 +37,8 @@ class NotasDaw extends Notas implements CalculosCentroEstudios{
         foreach ($this->getNotas() as $num){
             $suma += $num;
         }
-        $media = $suma / $cantidadNotas;
-        return round($media,1);
+        $media = $suma / $cantidadNotas; 
+        return round($media,1); //REDONDEO A 1 DECIMAL
 
     }
 
