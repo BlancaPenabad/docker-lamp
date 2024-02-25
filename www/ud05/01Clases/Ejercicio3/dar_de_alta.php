@@ -2,6 +2,7 @@
 
   require "lib/base_datos.php";
   require "lib/utilidades.php";
+  require "Usuario.php";
 
 ?>
 <!doctype html>
@@ -35,6 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         $conexion = get_conexion();
         seleccionar_bd_tienda($conexion);
         dar_alta_usuario($conexion, $nombre, $apellidos, $password, $edad, $provincia);
+        //CREO EL NUEVO OBJETO USUARIO:
+        $usuario = new Usuario($nombre, $apellidos, $edad, $provincia, $password);
         $mensajes[] = array("success","Usuario dado de alta correctamente");
         cerrar_conexion($conexion);
     }
