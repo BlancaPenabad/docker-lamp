@@ -1,9 +1,6 @@
 <?php
 
-namespace e3;
-
-abstract class Figura
-{
+abstract class Figura{
     // Método abstracto para dibujar la figura
     abstract public function dibujar();
     
