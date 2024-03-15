@@ -20,6 +20,15 @@
         <?php
         
         // Mostrar las notas guardadas en forma de lista
+        
+        $listado = glob("notas/*");
+        foreach($listado as $fichero){
+            if(file_exists($fichero)){
+                echo $fichero."</br>";
+            }
+        }
+
+
         ?>
     </ul>
 </body>
