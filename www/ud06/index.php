@@ -19,6 +19,8 @@ Flight::route('GET /cliente', 'getCliente');
 Flight::route('GET /hoteles', 'getHoteles');
 Flight::route('POST /hoteles', 'addHotel');
 Flight::route('DELETE /hoteles', 'deleteHotel');
+Flight::route('PUT /hoteles', 'modificarHotel');
+
 
 
 

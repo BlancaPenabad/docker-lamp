@@ -42,4 +42,24 @@ function deleteHotel(){
     Flight::json(["Hotel con id=$id eliminado correctamente."]); 
 }
 
+function modificarHotel(){
+    $id = Flight::request()->data->id;
+    $direccion = Flight::request()->data->direccion;
+    $email = Flight::request()->data->email;
+    $telefono = Flight::request()->data->telefono;
+
+    $sql = "UPDATE hoteles SET direccion=?, email=?, telefono=? WHERE id=?";
+    $stmt = Flight::db()->prepare($sql);
+
+    $stmt->bindParam(1, $direccion);
+    $stmt->bindParam(2, $email);
+    $stmt->bindParam(3, $telefono);
+    $stmt->bindParam(4, $id);
+
+    $stmt->execute();
+
+    Flight::json(["Hotel actualizado correctamente."]); 
+
+}
+
 ?>
