@@ -31,4 +31,17 @@ function addReserva(){
    Flight::json(["Nueva reserva añadida correctamente."]);
 }
 
+function deleteReserva(){
+    $id = Flight::request()->data->id;
+
+    $sql = "DELETE FROM reservas WHERE id=?";
+
+    $stmt = Flight::db()->prepare($sql);
+    $stmt->bindParam(1, $id);
+    $stmt->execute();
+
+    Flight::json(["Reserva con id=$id eliminada correctamente."]); 
+
+}
+
 ?>

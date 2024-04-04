@@ -26,6 +26,8 @@ Flight::route('PUT /hoteles', 'modificarHotel');
 //Tabla reservas
 Flight::route('GET /reservas', 'getReservas');
 Flight::route('POST /reservas', 'addReserva');
+Flight::route('DELETE /reservas', 'deleteReserva');
+
 
 
 
