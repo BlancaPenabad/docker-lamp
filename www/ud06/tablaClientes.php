@@ -7,4 +7,28 @@ function getClientes(){
     Flight::json($datos); //Imprimimos los datos en formato json.
 }
 
+
+function addCliente(){
+   $nombre = Flight::request()->data->nombre;
+   $apellidos = Flight::request()->data->apellidos;
+   $edad = Flight::request()->data->edad;
+   $email = Flight::request()->data->email;
+   $telefono = Flight::request()->data->telefono;
+
+   $sql = "INSERT INTO clientes (nombre, apellidos, edad, email, telefono)
+   VALUES (:nombre, :apellidos, :edad, :email, :telefono)"; //Sentencia de insert.
+
+   $stmt = FLight::db()->prepare($sql); //Preparamos la consulta con Flight.
+
+   $stmt->bindParam(':nombre', $nombre);
+   $stmt->bindParam(':apellidos', $apellidos);
+   $stmt->bindParam(':edad', $edad);
+   $stmt->bindParam(':email', $email);
+   $stmt->bindParam(':telefono', $telefono); //Inserción de datos.
+
+   $stmt->execute(); //Ejecutar sentencia.
+
+   Flight::json(["Nuevo cliente añadido correctamente"]);
+}
+
 ?>
