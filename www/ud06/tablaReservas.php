@@ -7,4 +7,28 @@ function getReservas(){
     Flight::json($datos); //Imprimimos los datos en formato json.
 }
 
+function addReserva(){
+   $id_cliente = Flight::request()->data->id_cliente;
+   $id_hotel = Flight::request()->data->id_hotel;
+   $fecha_reserva= Flight::request()->data->fecha_reserva;
+   $fecha_entrada = Flight::request()->data->fecha_entrada;
+   $fecha_salida = Flight::request()->data->fecha_salida;
+
+   $sql = "INSERT INTO reservas (id_cliente, id_hotel, fecha_reserva, fecha_entrada, fecha_salida)
+   VALUES (:id_cliente, :id_hotel, :fecha_reserva, :fecha_entrada, :fecha_salida)"; //Sentencia de insert.
+
+   $stmt = Flight::db()->prepare($sql); //Preparamos la consulta con Flight.
+
+   $stmt->bindParam(':id_cliente', $id_cliente);
+   $stmt->bindParam(':id_hotel', $id_hotel);
+   $stmt->bindParam(':fecha_reserva', $fecha_reserva);
+   $stmt->bindParam(':fecha_entrada', $fecha_entrada); 
+   $stmt->bindParam(':fecha_salida', $fecha_salida);
+
+
+   $stmt->execute(); //Ejecutar sentencia.
+
+   Flight::json(["Nueva reserva añadida correctamente."]);
+}
+
 ?>
