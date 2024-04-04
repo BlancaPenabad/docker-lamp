@@ -17,6 +17,8 @@ Flight::route('GET /cliente', 'getCliente');
 
 //Tabla hoteles
 Flight::route('GET /hoteles', 'getHoteles');
+Flight::route('POST /hoteles', 'addHotel');
+
 
 
 Flight::start();

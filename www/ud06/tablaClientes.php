@@ -28,7 +28,7 @@ function addCliente(){
    $sql = "INSERT INTO clientes (nombre, apellidos, edad, email, telefono)
    VALUES (:nombre, :apellidos, :edad, :email, :telefono)"; //Sentencia de insert.
 
-   $stmt = FLight::db()->prepare($sql); //Preparamos la consulta con Flight.
+   $stmt = Fight::db()->prepare($sql); //Preparamos la consulta con Flight.
 
    $stmt->bindParam(':nombre', $nombre);
    $stmt->bindParam(':apellidos', $apellidos);

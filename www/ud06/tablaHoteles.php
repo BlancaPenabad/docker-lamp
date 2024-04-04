@@ -7,5 +7,25 @@ function getHoteles(){
     Flight::json($datos); //Imprimimos los datos en formato json.
 }
 
+function addHotel(){
+   $hotel = Flight::request()->data->hotel;
+   $direccion = Flight::request()->data->direccion;
+   $telefono = Flight::request()->data->telefono;
+   $email = Flight::request()->data->email;
 
+   $sql = "INSERT INTO hoteles (hotel, direccion, telefono, email)
+   VALUES (:hotel, :direccion, :telefono, :email)"; //Sentencia de insert.
+
+   $stmt = Flight::db()->prepare($sql); //Preparamos la consulta con Flight.
+
+   $stmt->bindParam(':hotel', $hotel);
+   $stmt->bindParam(':direccion', $direccion);
+   $stmt->bindParam(':telefono', $telefono); 
+   $stmt->bindParam(':email', $email);
+
+
+   $stmt->execute(); //Ejecutar sentencia.
+
+   Flight::json(["Nuevo hotel añadido correctamente."]);
+}
 ?>
