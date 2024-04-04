@@ -32,7 +32,7 @@ function addCliente(){
 }
 
 function deleteCliente(){
-    $id = FLight::request()->data->id;
+    $id = Flight::request()->data->id;
 
     $sql = "DELETE FROM clientes WHERE id=?";
 
@@ -41,6 +41,33 @@ function deleteCliente(){
     $stmt->execute();
 
     Flight::json(["Cliente con id=$id eliminado correctamente."]); 
+
+}
+
+
+function modificaCliente(){
+    $id = Flight::request()->data->id;
+    $apellido = Flight::request()->data->apellidos;
+    $edad = Flight::request()->data->edad;
+    $email = Flight::request()->data->email;
+    $telefono = Flight::request()->data->telefono;
+
+    $sql = "UPDATE clientes SET apellidos=?, edad=?, email=?, telefono=? WHERE id=?";
+    $stmt = Flight::db()->prepare($sql);
+
+    $stmt->bindParam(1, $apellido);
+    $stmt->bindParam(2, $edad);
+    $stmt->bindParam(3, $email);
+    $stmt->bindParam(4, $telefono);
+    $stmt->bindParam(5, $id);
+
+    $stmt->execute();
+
+    Flight::json(["Cliente actualizado correctamente."]); 
+
+
+
+
 
 }
 
