@@ -44,4 +44,22 @@ function deleteReserva(){
 
 }
 
+function modificarReserva(){
+    $id = Flight::request()->data->id;
+    $fecha_entrada = Flight::request()->data->fecha_entrada;
+    $fecha_salida = Flight::request()->data->fecha_salida;
+
+    $sql = "UPDATE reservas SET fecha_entrada=?, fecha_salida=? WHERE id=?";
+    $stmt = Flight::db()->prepare($sql);
+
+    $stmt->bindParam(1, $fecha_entrada);
+    $stmt->bindParam(2, $fecha_salida);
+    $stmt->bindParam(3, $id);
+
+    $stmt->execute();
+
+    Flight::json(["Reserva actualizada correctamente."]); 
+
+}
+
 ?>
