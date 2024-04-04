@@ -11,5 +11,7 @@ Flight::route('GET /clientes', 'getClientes'); //Para consultar datos usamos el 
 Flight::route('POST /clientes', 'addCliente'); //Para añadir datos usamos el método POST.
 Flight::route('DELETE /clientes', 'deleteCliente');
 Flight::route('PUT /clientes', 'modificaCliente');
+Flight::route('GET /cliente', 'getCliente'); 
+
 
 Flight::start();

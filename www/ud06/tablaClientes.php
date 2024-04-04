@@ -7,6 +7,16 @@ function getClientes(){
     Flight::json($datos); //Imprimimos los datos en formato json.
 }
 
+function getCliente(){
+    $id = Flight::request()->data->id;
+    $sql = "SELECT * FROM clientes WHERE id=?";
+
+    $stmt = Flight::db()->prepare($sql);
+    $stmt->bindParam(1, $id);
+    $stmt->execute();
+    
+}
+
 
 function addCliente(){
    $nombre = Flight::request()->data->nombre;
