@@ -28,7 +28,20 @@ function addCliente(){
 
    $stmt->execute(); //Ejecutar sentencia.
 
-   Flight::json(["Nuevo cliente añadido correctamente"]);
+   Flight::json(["Nuevo cliente añadido correctamente."]); //Mensaje final en formato json
+}
+
+function deleteCliente(){
+    $id = FLight::request()->data->id;
+
+    $sql = "DELETE FROM clientes WHERE id=?";
+
+    $stmt = Flight::db()->prepare($sql);
+    $stmt->bindParam(1, $id);
+    $stmt->execute();
+
+    Flight::json(["Cliente con id=$id eliminado correctamente."]); 
+
 }
 
 ?>
