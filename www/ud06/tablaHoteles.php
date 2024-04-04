@@ -28,4 +28,18 @@ function addHotel(){
 
    Flight::json(["Nuevo hotel añadido correctamente."]);
 }
+
+
+function deleteHotel(){
+    $id = Flight::request()->data->id;
+
+    $sql = "DELETE FROM hoteles WHERE id=?";
+
+    $stmt = Flight::db()->prepare($sql);
+    $stmt->bindParam(1, $id);
+    $stmt->execute();
+
+    Flight::json(["Hotel con id=$id eliminado correctamente."]); 
+}
+
 ?>
