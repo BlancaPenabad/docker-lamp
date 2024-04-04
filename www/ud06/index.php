@@ -4,6 +4,7 @@
 require 'flight/autoload.php';
 require 'tablaClientes.php';
 require 'tablaHoteles.php';
+require 'tablaReservas.php';
 
 Flight::register('db', 'PDO', array('mysql:host=db;dbname=pruebas','root','test'));
 
@@ -20,6 +21,11 @@ Flight::route('GET /hoteles', 'getHoteles');
 Flight::route('POST /hoteles', 'addHotel');
 Flight::route('DELETE /hoteles', 'deleteHotel');
 Flight::route('PUT /hoteles', 'modificarHotel');
+
+
+//Tabla reservas
+Flight::route('GET /reservas', 'getReservas');
+
 
 
 
