@@ -7,6 +7,17 @@ function getReservas(){
     Flight::json($datos); //Imprimimos los datos en formato json.
 }
 
+
+function getReserva($id){
+    $stmt = Flight::db()->prepare("SELECT * FROM reservas WHERE id=?");
+
+    $stmt->bindParam(1, $id);
+    $stmt->execute();
+    $datos = $stmt->fetch();
+    Flight::json($datos);
+    
+}
+
 function addReserva(){
    $id_cliente = Flight::request()->data->id_cliente;
    $id_hotel = Flight::request()->data->id_hotel;
