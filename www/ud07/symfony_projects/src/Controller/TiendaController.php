@@ -12,48 +12,57 @@ class TiendaController extends AbstractController{
     public function __construct() {
         
         $this->productos = [
-            ['descripcion' =>'Baguette', 
+            ['id' => '1',
+            'descripcion' =>'Baguette', 
             'foto' => 'images/baguette.jpeg',
             'precio' => '2,50€'],
 
-            ['descripcion' => 'Boule', 
+            ['id' => '2',
+            'descripcion' => 'Boule', 
             'foto' => 'images/boule.jpeg',
             'precio' => '1,50€'],
 
-            ['descripcion' => 'Bretzel', 
-            'foto' => 'images/bretzel.jpeg',
+            ['id' => '3',
+            'descripcion' => 'Bretzel', 
+            'foto' => 'images/bretzel.jpg',
             'precio' => '1,50€'],
 
-            ['descripcion' => 'Brioche', 
+            ['id' => '4',
+            'descripcion' => 'Brioche', 
             'foto' => 'images/brioche.jpeg',
             'precio' => '1,50€'],
 
             
-            ['descripcion' => 'Croissant',
+            ['id' => '5',
+            'descripcion' => 'Croissant',
              'foto' => 'images/croissant.jpg',
              'precio' => '1,20€'],
 
-            ['descripcion' => 'Pain au chocolat', 
+            ['id' => '6',
+            'descripcion' => 'Pain au chocolat', 
             'foto' => 'images/painauchocolat.jpeg',
             'precio' => '1,50€'],
 
-            ['descripcion' => 'Galette', 
+            ['id' => '7',
+            'descripcion' => 'Galette', 
             'foto' => 'images/galette.jpg',
             'precio' => '1,50€'],
 
-            ['descripcion' => 'Éclairs', 
+            ['id' => '8',
+            'descripcion' => 'Éclairs', 
             'foto' => 'images/eclairs.jpeg',
             'precio' => '1,50€'],
 
-            ['descripcion' => 'Paris-brest', 
-            'foto' => 'images/paris-brest.jpeg',
+            ['id' => '9',
+            'descripcion' => 'Paris-brest', 
+            'foto' => 'images/paris-brest.jpg',
             'precio' => '1,50€']
 
             
             
         ];
 
-        $this->nombre = 'Boulangerie LeBlanc';
+        $this->nombre = 'LeBlanc boulangerie & pattiserie';
     }
 
         
@@ -73,6 +82,35 @@ class TiendaController extends AbstractController{
         return $this->render('tienda/boulangerie.html.twig',[
             'titulo' => $this->nombre,
             'productos' => $this->productos
+
+        ]);
+    }
+
+    #[Route('/pattiserie')]
+    public function pattiserie(){
+        return $this->render('tienda/pattiserie.html.twig',[
+            'titulo' => $this->nombre,
+            'productos' => $this->productos
+
+        ]);
+    }
+
+    #[Route('/detalles/{id}', 'detalles-producto')]
+    public function detalles($id){
+        $productoElegido = null;
+        foreach ($this->productos as $producto){
+            if($producto['id'] === $id){
+                $productoElegido = $producto;
+                break;
+            }
+        }
+
+        $descripcion = $productoElegido['descripcion'];
+    
+        return $this->render('tienda/detalles.html.twig',[
+            'titulo' => $descripcion,
+            'producto' => $productoElegido,
+            'foto' => $productoElegido['foto']
 
         ]);
     }

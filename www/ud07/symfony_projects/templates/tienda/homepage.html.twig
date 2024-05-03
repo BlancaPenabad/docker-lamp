@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block stylesheets %}
 
-    <link rel="stylesheets" href="/styles/app.css">
+    <link href="{{ asset('public/styles/app.css')}}" type="text/css rel="stylesheet"/>
 
 {% endblock %}
+
 
 {% block body %}
 
@@ -27,6 +30,6 @@
       </div>
    {% endfor %}
 
- <a href="{{ ('boulangerie') }}" class="button">Productos boulangerie</a> 
-{% endblock %}
+ <a href="{{ ('boulangerie') }}" class="button">Nuestros productos </a> 
 
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig'%}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('public/styles/app.css')}}" type="text/css rel="stylesheet"/>
+
+{% endblock %}
+
+{% block body %}
+    <div class="foto">
+        <img src="{{ producto.foto }}" width="200" height="150">
+    </div>
+    <div class="container">
+        <h1>{{producto.descripcion}}</h1>
+        <p>{{producto.precio}}</p>
+    </div>
+
+{% endblock %}
