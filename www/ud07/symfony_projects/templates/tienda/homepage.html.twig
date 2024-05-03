@@ -13,23 +13,14 @@
 
 <h1> {{titulo}} </h1>
 <div class="jumbotron-img jumbotron jumbotron-fluid">
-    <div class="container">
-        <h2 class="display-4">Nuestros productos</h2>
-    </div>
+    
 
-{# Imprimo array #}
-
-   {% for producto in productos %}
-    <div class="producto">
-        <div class="imagen">
-            <img src="{{producto.foto}}" width="200" height="150">
-        </div>
-        <div class="producto-descripcion">
-            <h3>{{producto.descripcion}} - {{ producto.precio }}</h3>
-        </div>
+    <div class="info">
+            <h3>Panadería y pastelería francesa. Productos artesanales.</h3>
       </div>
-   {% endfor %}
-
- <a href="{{ ('boulangerie') }}" class="button">Nuestros productos </a> 
+   <div class="foto">
+        <img src="images/croissant.jpg" width="300" height="250">
+    </div>
+ <a href="{{ ('boulangerie') }}" class="button">Nuestros productos</a> 
 
 {% endblock %}

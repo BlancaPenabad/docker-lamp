@@ -12,6 +12,9 @@
     <h2 class="display-4">Boulangerie: Productos de pan</h2>
 
     </br>
+
+    {# Imprimo array #}
+
    {% for producto in productos | slice(0, 4)%}
 
         <div class="producto">
@@ -20,7 +23,6 @@
             </div>
             <div class="producto-descripcion">
                 <h3>{{producto.descripcion}}</h3>
-                <p>{{ producto.precio }}</p>
             </div>
             <div class="ver-detalles">
                 <a href="{{path('detalles-producto', {id: producto.id}) }}" class="button">Detalles</a>
@@ -40,7 +42,6 @@
             </div>
             <div class="producto-descripcion">
                 <h3>{{producto.descripcion}}</h3>
-                <p>{{ producto.precio }}</p>
             </div>
             <div class="ver-detalles">
                 <a href="{{path('detalles-producto', {id: producto.id}) }}" class="button">Detalles</a>
@@ -50,7 +51,7 @@
         </br>
    {% endfor %}
 
- <a href="{{ ('homepage') }}" class="button">Atrás</a> 
+ <a href="{{ ('/') }}" class="button">Atrás</a> 
 
 
 {% endblock %}
