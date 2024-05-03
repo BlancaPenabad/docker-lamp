@@ -1,0 +1,22 @@
+<h1> {{titulo}} </h1>
+<div class="jumbotron-img jumbotron jumbotron-fluid">
+    <div class="container">
+        <h2 class="display-4">Boulangerie: Productos de pan</h2>
+    </div>
+{% block body %}
+{# Imprimo array #}
+
+   {% for producto in productos | slice(0, 4)%}
+
+        <div class="producto">
+            <div class="imagen">
+                <img src="{{producto.foto}}" width="200" height="150">
+            </div>
+            <div class="producto-descripcion">
+                <h3>{{producto.descripcion}} - {{ producto.precio }}</h3>
+            </div>
+        </div>
+   {% endfor %}
+
+
+{% endblock %}
