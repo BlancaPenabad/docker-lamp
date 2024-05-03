@@ -1,16 +1,32 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html.twig' %}
 
+{% block stylesheets %}
 
-<h1>Título</h1>
+    <link rel="stylesheets" href="/styles/app.css">
 
-<h2> {{titulo}} </h2>
+{% endblock %}
+
+{% block body %}
+
+<h1> {{titulo}} </h1>
+<div class="jumbotron-img jumbotron jumbotron-fluid">
+    <div class="container">
+        <h2 class="display-4">Nuestros productos</h2>
+    </div>
 
 {# Imprimo array #}
 
-{% for producto in productos %}
-   {{producto}}
+   {% for producto in productos %}
+    <div class="producto">
+        <div class="imagen">
+            <img src="{{producto.foto}}" width="200" height="150">
+        </div>
+        <div class="producto-descripcion">
+            <h3>{{producto.descripcion}} - {{ producto.precio }}</h3>
+        </div>
+      </div>
    {% endfor %}
 
 
-</html>
+{% endblock %}
+
