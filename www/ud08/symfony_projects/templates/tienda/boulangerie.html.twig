@@ -1,0 +1,58 @@
+{% extends 'base.html.twig'%}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('styles/app.css')}}" type="text/css" rel="stylesheet"/>
+
+{% endblock %}
+
+{% block body %}
+{# Imprimo array #}
+    <h1> {{titulo}} </h1>
+    <h2 class="display-4">Boulangerie: Productos de pan</h2>
+
+    </br>
+
+    {# Imprimo el array de productos usando un for. Utilizo el filtro
+    slide para coger los primeros 4 elementos del array.#}
+
+   {% for producto in productos | slice(0, 4)%}
+
+        <div class="producto">
+            <div class="imagen">
+                <img src="{{producto.foto}}" width="200" height="150"> {#Muestro la foto de cada producto#}
+            </div>
+            <div class="producto-descripcion">
+                <h3>{{producto.descripcion}}</h3> {#Descripción de cada producto#}
+            </div>
+            <div class="ver-detalles">
+                <a href="{{path('detalles-producto', {id: producto.id}) }}" class="button">Detalles</a>
+            </div>
+        </div>
+        </br>
+        </br>
+   {% endfor %}
+    </br>
+    <h2 class="display-4">Pattiserie: Dulces franceses</h2>
+
+    {% for producto in productos | slice(4, 8)%}
+
+        <div class="producto">
+            <div class="imagen">
+                <img src="{{producto.foto}}" width="200" height="150">
+            </div>
+            <div class="producto-descripcion">
+                <h3>{{producto.descripcion}}</h3>
+            </div>
+            <div class="ver-detalles">
+                <a href="{{path('detalles-producto', {id: producto.id}) }}" class="button">Detalles</a>
+            </div>
+        </div>
+        </br>
+        </br>
+   {% endfor %}
+
+ <a href="{{ ('/') }}" class="button">Atrás</a> 
+
+
+{% endblock %}
