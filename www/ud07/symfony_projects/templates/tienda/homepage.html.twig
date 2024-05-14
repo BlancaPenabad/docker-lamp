@@ -4,15 +4,15 @@
 
 {% block stylesheets %}
 
-    <link href="{{ asset('public/styles/app.css')}}" type="text/css rel="stylesheet"/>
+    <link href="{{ asset('styles/app.css')}}" type="text/css" rel="stylesheet"/>
 
 {% endblock %}
 
 
 {% block body %}
-
+<body>
 <h1> {{titulo}} </h1>     
-
+{{ component('Alert') }}
     <div class="info">
             <h3>Panadería y pastelería francesa. Productos artesanales.</h3>
       </div>
@@ -20,5 +20,5 @@
         <img src="images/croissant.jpg" width="300" height="250">
     </div>
  <a href="{{ ('boulangerie') }}" class="button">Nuestros productos</a> 
-
+</body>
 {% endblock %}

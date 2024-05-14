@@ -1,8 +1,23 @@
 body {
     font-family: spartan;
-    color: #444;
+    background-color: burlywood;
+
 }
 
 h1{
-    color: aqua;
+    color: rgb(151, 90, 33);
 }
+
+h2{
+    color: rgb(151, 90, 33);
+
+}
+
+h3{
+    color: rgb(151, 90, 33);
+}
+
+p{
+    color: rgb(151, 90, 33);
+}
+
