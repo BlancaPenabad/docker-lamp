@@ -4,6 +4,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Contracts\Cache\CacheItemInterface;
+
 
 class TiendaController extends AbstractController{
 
@@ -29,10 +32,14 @@ class TiendaController extends AbstractController{
 
 
     #[Route('/boulangerie')]
-    public function boulangerie(HttpClientInterface $httpClient) : Response{
+    public function boulangerie(HttpClientInterface $httpClient, CacheInterface $cache) : Response{
         
-        $response = $httpClient->request('GET', 'https://raw.githubusercontent.com/BlancaPenabad/docker-lamp/main/www/ud08/symfony_projects/public/data/data.json?token=GHSAT0AAAAAACQONLUN5R4Z4XHPSHLNNXAIZSTLP2A');
-        $productosI = $response->toArray();
+        $productosI = $cache->get('productos_data', function(CacheItemInterface $cacheItem) use($httpClient){
+            $cacheItem->expiresAfter(10);
+            $response = $httpClient->request('GET', 'https://raw.githubusercontent.com/BlancaPenabad/repoB/main/data.json');
+            return $response->toArray();
+        });
+        
         return $this->render('tienda/boulangerie.html.twig',[
             'titulo' => $this->nombre,
             'productos' => $productosI,
@@ -44,7 +51,7 @@ class TiendaController extends AbstractController{
 
     #[Route('/detalles/{id}', 'detalles-producto')]
     public function detalles(HttpClientInterface $httpClient ,$id) : Response{
-        $response = $httpClient->request('GET', 'https://raw.githubusercontent.com/BlancaPenabad/docker-lamp/main/www/ud08/symfony_projects/public/data/data.json?token=GHSAT0AAAAAACQONLUN5R4Z4XHPSHLNNXAIZSTLP2A');
+        $response = $httpClient->request('GET', 'https://raw.githubusercontent.com/BlancaPenabad/repoB/main/data.json');
         $productosI = $response->toArray();
 
         $id = (int)$id;
