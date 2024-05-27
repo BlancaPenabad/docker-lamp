@@ -7,7 +7,7 @@ function getClientes(){
     Flight::json($datos); //Imprimimos los datos en formato json.
 }
 
-function getCliente($id){
+function getCliente($id){ //El id se pone en el link http://localhost/ud06/2 
     $stmt = Flight::db()->prepare("SELECT * FROM clientes WHERE id=?");
 
     $stmt->bindParam(1, $id);
