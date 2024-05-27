@@ -1,0 +1,26 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+{# Imprimo array #}
+    <h1> {{titulo}} </h1>
+    <h2 class="display-4">Alimentos para tus mascotas:</h2>
+
+    </br>
+
+    {# Imprimo el json de pets usando un for.#}
+
+   {% for pet in pets %}
+
+        <div class="pets">
+           
+            <div class="pet_data">
+                <h3>{{pet.photo}}</h3> 
+                <h3>{{pet.name}}</h3> 
+                <h3>{{pet.species}}</h3> 
+                <h3>{{pet.favFoods}}</h3> 
+                <h3>{{pet.birthYear}}</h3> 
+        </div>
+        </br>
+        </br>
+   {% endfor %}
+   {% endblock %}
