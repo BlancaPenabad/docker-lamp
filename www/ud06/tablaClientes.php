@@ -41,6 +41,8 @@ function addCliente(){
    Flight::json(["Nuevo cliente añadido correctamente."]); //Mensaje final en formato json
 }
 
+
+//Elimina un cliente con una id concreta (indicada en el body de la consola):
 function deleteCliente(){
     $id = Flight::request()->data->id;
 

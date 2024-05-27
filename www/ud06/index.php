@@ -6,7 +6,8 @@ require 'tablaClientes.php';
 require 'tablaHoteles.php';
 require 'tablaReservas.php';
 
-Flight::register('db', 'PDO', array('mysql:host=db;dbname=pruebas','root','test'));
+//Nombre de la base de datos y credenciales para acceder
+Flight::register('db', 'PDO', array('mysql:host=db;dbname=pruebas','root','test')); 
 
 //Tabla clientes
 Flight::route('GET /clientes', 'getClientes'); //Para consultar datos usamos el método GET
