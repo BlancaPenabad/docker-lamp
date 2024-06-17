@@ -155,6 +155,17 @@ function get_ultima_donacion($conexion, $idDonante)
     return $proxima_donacion;
 }
 
+
+function donaciones_antiguas($conexion, $fecha)
+{
+    $consulta = $conexion->prepare("SELECT * FROM historico WHERE fechaDonacion < :fechaIntroducida");
+    $consulta->bindParam(':fechaIntroducida', $fecha);
+    $consulta->execute();
+    return $consulta;
+}
+
+
+
 function cerrar_conexion($conexion)
 {
     $conexion = null;
