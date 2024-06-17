@@ -29,13 +29,10 @@ crear_tabla_historico($conexion);
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
     <br>
-    <h1>Gestión donacion de Sangre</h1>
+    <h1>Informes</h1>
     <div>
-        <a class="btn btn-primary" href="dar_alta_donante.php" role="button">Alta donantes</a>
-        <a class="btn btn-primary" href="buscar_donantes.php" role="button">Buscar donantes</a>
-        <a class="btn btn-primary" href="listar_donantes.php" role="button">Listar donantes</a>
-        <a class="btn btn-primary" href="dar_alta_administrador.php" role="button">Nuevos administradores</a>
-        <a class="btn btn-primary" href="informes.php" role="button">Informes</a>
+        
+        <a class="btn btn-primary" href="informe_donaciones_antiguas.php" role="button">Donaciones antiguas</a>
 
     </div>
 
